@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 // 1. 회원가입 선택 (y/n)
@@ -10,8 +11,9 @@ import java.util.HashMap;
 
 //현재 문제
 //회원가입 의사 잘못된 입력 -- continue로 해결
-//비밀번호 5번 확인
-// 비밀번호를 제대로 입력한 경우에 다시 아이디 입력으로 넘어옴
+//비밀번호 5번 확인 - 해결
+// 비밀번호를 제대로 입력한 경우에 다시 아이디 입력으로 넘어옴 - 괄호 위치 문제(?)
+//해시맵에 값을 put해놓고 get으로 꺼낼 때 null값이 호출 -
 public class new_signup {
     public static void main(String[] args)throws IOException {
         boolean signup = false;
@@ -24,14 +26,12 @@ public class new_signup {
             String s = br.readLine();
 
             if (s.equals("Y") || s.equals("y")){
-                //signup = false;
                 signup = true;
 
                 System.out.println("회원가입을 계속 진행하겠습니다.");
             }
             else if (s.equals("N") || s.equals("n")){ //추가 참고 -- equalsIgnoreCase 시용시 대소문자 구분 X
-                signup = true;
-                //signup = fal se;
+                signup = false;
 
                 System.out.println("회원가입이 종료되었습니다. 감사합니다.");
                 System.exit(0);
@@ -43,7 +43,7 @@ public class new_signup {
 
             ArrayList users = new ArrayList();
             while(true){
-                HashMap user = new HashMap();
+                HashMap <String, String[]>user = new HashMap();
 
                 System.out.print("아이디를 입력해주세요: ");
                 String id = br.readLine();
@@ -85,24 +85,41 @@ public class new_signup {
                             }
 
                         }
-                        String birth = "";
-                        while(true){
-                            System.out.print("생년월일 6자리를 입력해주세요: ");
-                            birth = br.readLine();
-                            if(birth.length() == 6){
-                                break;
-                            }
-                            else{
-                                System.out.print("6자리 생년월일을 다시 입력해주세요: ");
-                            }
-                        }
                     }
                 }
+                String birth = "";
+                while(true){
+                    System.out.print("생년월일 6자리를 입력해주세요: ");
+                    birth = br.readLine();
+                    if(birth.length() == 6){
+                        break;
+                    }
+                    else{
+                        System.out.print("6자리의 생년월일로 다시 입력해주세요: ");
+                        birth = br.readLine();
+                    }
+                }
+                System.out.print("이메일을 입력해주세요: ");
+                String email = br.readLine();
+
+                user.put("password", new String[] {pw});
+                user.put("birthday", new String[] {birth});
+                user.put("email",new String[] {email});
+
+                System.out.println("아이디는 " + id + " 입니다"); //저장된 값들 보여주기 ->
+                System.out.println("비밀번호는 " + pw + " 입니다");
+                System.out.println("생년월일은 " + birth +" 입니다.");
+                System.out.println("이메일은 " + email +" 입니다.");
+
+                System.out.println("회원 가입이 완료 되었습니다. 감사합니다.");
+
+                //System.exit(0);
             }
 
             //switch(){
             //case 1:
             //}
+
         }
     }
 }
