@@ -13,7 +13,7 @@ import java.util.HashMap;
 //회원가입 의사 잘못된 입력 -- continue로 해결
 //비밀번호 5번 확인 - 해결
 // 비밀번호를 제대로 입력한 경우에 다시 아이디 입력으로 넘어옴 - 괄호 위치 문제(?)
-//해시맵에 값을 put해놓고 get으로 꺼낼 때 null값이 호출 -
+//해시맵에 값을 put해놓고 get으로 꺼낼 때 null값이 호출 - Hash get, put 수정
 public class new_signup {
     public static void main(String[] args)throws IOException {
         boolean signup = false;
@@ -41,9 +41,10 @@ public class new_signup {
                 continue;
             }
 
-            ArrayList users = new ArrayList();
+            //ArrayList users = new ArrayList();
+
             while(true){
-                HashMap <String, String[]>user = new HashMap();
+                HashMap <String, String> user = new HashMap<>();
 
                 System.out.print("아이디를 입력해주세요: ");
                 String id = br.readLine();
@@ -102,24 +103,44 @@ public class new_signup {
                 System.out.print("이메일을 입력해주세요: ");
                 String email = br.readLine();
 
-                user.put("password", new String[] {pw});
-                user.put("birthday", new String[] {birth});
-                user.put("email",new String[] {email});
+                user.put("password", pw);
+                user.put("birthday", birth);
+                user.put("email",email);
 
                 System.out.println("아이디는 " + id + " 입니다"); //저장된 값들 보여주기 ->
-                System.out.println("비밀번호는 " + pw + " 입니다");
-                System.out.println("생년월일은 " + birth +" 입니다.");
-                System.out.println("이메일은 " + email +" 입니다.");
+                System.out.println("비밀번호는 " + user.get("password") + " 입니다");
+                System.out.println("생년월일은 " + user.get("birthday") +" 입니다.");
+                System.out.println("이메일은 " + user.get("email") +" 입니다.");
 
                 System.out.println("회원 가입이 완료 되었습니다. 감사합니다.");
 
-                //System.exit(0);
+                System.out.println("---비밀번호를 변경하시겠습니까?---(y/n)");
+                System.out.print(">> ");
+                String m = br.readLine();
+
+                if(m.equals("Y") || m.equals("y")){
+                    System.out.print("기존 비밀번호를 입력해주세요: ");
+                    String correctPw = br.readLine();
+
+                    if(pw.equals(correctPw)){
+                        System.out.print("변경할 비밀번호를 입력해주세요: ");
+                        String newPw = br.readLine();
+
+                        user.replace("password", pw);
+                        System.out.println("비밀번호가 변경되었습니다.");
+                    }
+                    else{
+                        System.out.println("기존 비밀번호가 다릅니다.");
+                        System.out.println("비밀번호 변경을 종료합니다.");
+                    }
+                }
+                else{
+
+                    System.out.println("비밀번호 변경을 하지 않습니다. 감사합니다.");
+                    System.exit(0);
+                }
+                System.exit(0);
             }
-
-            //switch(){
-            //case 1:
-            //}
-
         }
     }
 }
