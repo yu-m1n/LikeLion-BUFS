@@ -1,5 +1,6 @@
-package week6;
+//실행파일
 
+package week6;
 public class object_practice{
     public static void main(String[] args){
         dohun p1 = new dohun(); //도훈
