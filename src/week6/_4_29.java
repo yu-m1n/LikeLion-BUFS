@@ -1,3 +1,5 @@
+package week6;
+
 class _4_29 {
     int[] arr;
     private int point; //외부에서 건들지 못함
@@ -13,5 +15,4 @@ class _4_29 {
     int pop(){
         return arr[point--];
     }
-    //void
 }

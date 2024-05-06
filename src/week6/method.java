@@ -1,3 +1,7 @@
+package week6;
+
+import week6.likelion2024;
+
 import java.util.Scanner;
 
 // 백엔드 세션 사람 3명 객체로 만들기
