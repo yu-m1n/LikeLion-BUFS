@@ -1,3 +1,5 @@
+package week6.signup;
+
 import java.io.*;
 import java.util.HashMap;
 

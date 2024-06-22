@@ -1,4 +1,4 @@
-//상속 - 상위(코드의 재사용성을 위해)
+package week7;//상속 - 상위(코드의 재사용성을 위해)
 
 class Animal {
     int eyes;

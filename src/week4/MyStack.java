@@ -1,3 +1,5 @@
+package week4;
+
 class MyStack {
     int[] arr;
     private int point;

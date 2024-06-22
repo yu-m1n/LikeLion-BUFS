@@ -1,6 +1,6 @@
-//라쿤 객체 생성하기
+package week7;//라쿤 객체 생성하기
 
-class raccoon extends Animal{ //필드(여기에만 있는건 독립적 특징) -- Animal 필드에 공통된 특징도 포함
+class raccoon extends Animal{ //필드(여기에만 있는건 독립적 특징) -- week7.Animal 필드에 공통된 특징도 포함
     boolean pattern;
     boolean is_it_racoon;
     int tail;

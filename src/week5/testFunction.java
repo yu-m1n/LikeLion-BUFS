@@ -1,3 +1,5 @@
+package week5;
+
 public class testFunction {
     static int sum(int a, int b){
         return a+b;

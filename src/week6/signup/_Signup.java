@@ -1,4 +1,4 @@
-package week5;
+package week6.signup;
 
 import java.io.BufferedReader;
 import java.io.IOException;
